@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="19H15" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Note" representedClassName=".NoteMO" syncable="YES" codeGenerationType="category">
+        <attribute name="contents" optional="YES" attributeType="String"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="title" attributeType="String"/>
+        <relationship name="notebook" maxCount="1" deletionRule="Nullify" destinationEntity="Notebook" inverseName="notes" inverseEntity="Notebook"/>
+        <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Photograph" inverseName="note" inverseEntity="Photograph"/>
+    </entity>
+    <entity name="Notebook" representedClassName=".NotebookMO" syncable="YES" codeGenerationType="category">
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="title" attributeType="String"/>
+        <relationship name="notes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Note" inverseName="notebook" inverseEntity="Note"/>
+        <relationship name="photograph" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Photograph" inverseName="notebook" inverseEntity="Photograph"/>
+    </entity>
+    <entity name="Photograph" representedClassName="PhotographMO" syncable="YES" codeGenerationType="category">
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="imageData" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <relationship name="note" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="photos" inverseEntity="Note"/>
+        <relationship name="notebook" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Notebook" inverseName="photograph" inverseEntity="Notebook"/>
+    </entity>
+    <elements>
+        <element name="Note" positionX="-5639.875" positionY="-17327.58203125" width="128" height="118"/>
+        <element name="Notebook" positionX="-5888.35546875" positionY="-17415.3046875" width="128" height="103"/>
+        <element name="Photograph" positionX="-5907.73046875" positionY="-17205.56640625" width="128" height="103"/>
+    </elements>
+</model>
